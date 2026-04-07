@@ -1,0 +1,54 @@
+{
+  "name": "luxeconnect-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "npx prisma generate",
+    "build": "nest build",
+    "start": "node dist/main",
+    "start:dev": "nest start --watch",
+    "start:prod": "npx prisma migrate deploy && npx prisma db seed || true && node dist/main",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "npx ts-node prisma/seed.ts",
+    "db:studio": "npx prisma studio"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/config": "^3.1.1",
+    "@nestjs/core": "^10.3.0",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/passport": "^10.0.3",
+    "@nestjs/platform-express": "^10.3.0",
+    "@nestjs/swagger": "^7.2.0",
+    "@nestjs/throttler": "^5.1.1",
+    "@prisma/client": "^5.8.0",
+    "@aws-sdk/client-s3": "^3.490.0",
+    "@aws-sdk/s3-request-presigner": "^3.490.0",
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "reflect-metadata": "^0.2.1",
+    "rxjs": "^7.8.1",
+    "stripe": "^14.12.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.3.0",
+    "@nestjs/schematics": "^10.1.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/passport-jwt": "^4.0.0",
+    "@types/uuid": "^9.0.7",
+    "prisma": "^5.8.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}
