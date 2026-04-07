@@ -7,7 +7,7 @@
     "build": "nest build",
     "start": "node dist/main",
     "start:dev": "nest start --watch",
-    "start:prod": "npx prisma migrate deploy && npx prisma db seed || true && node dist/main",
+    "start:prod": "npx prisma db push --skip-generate && npx prisma db seed; node dist/main",
     "db:migrate": "npx prisma migrate dev",
     "db:seed": "npx ts-node prisma/seed.ts",
     "db:studio": "npx prisma studio"
@@ -49,6 +49,6 @@
     "typescript": "^5.3.3"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
