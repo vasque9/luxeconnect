@@ -3,8 +3,8 @@ WORKDIR /app
 
 RUN apk add --no-cache openssl openssl-dev
 
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json ./
+RUN npm install
 
 COPY prisma ./prisma
 ENV PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1
